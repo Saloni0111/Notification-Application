@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" style="height:100%;margin:0">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BTP Project</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <style>
+      div.msg_bbl {
+        background-color: #ddd;
+        padding: 5px 10px;
+        border-radius: 10px;
+        color: #555;
+        margin-bottom: 5px;
+      }
+    </style>
+
+  </head>
+  <body style="height:100%;margin:0" >
+
+
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-database.js"></script>
+   
+    <div class="text-center well"><b>Notifications</b></div>
+
+    <div class="container">
+      <div class="col-sm-12">
+        <div class="no_message">
+          <% if(flag == 1) {%>
+            <div class="message_holder">
+              <div class="msg_bbl">
+                <b style="color: #000">
+                <%= mess%>
+                </b>
+              </div>
+            </div>
+          <%}else if(flag == 2){%>
+            <embed src= <%= mess%> width="800" height="800">
+          <%}else if(flag == 3){%>
+            <img src= <%=mess%> style="border-radius:5px" alt="Image" width="960" height="540">
+          <%}else if(flag == 4){%>
+            <div class="message_holder">
+              <div class="msg_bbl">
+                <b style="color: #000">
+                  "New video Notification !"
+                </b>
+              </div>
+            </div>
+            <video controls autoplay muted><source src=<%=mess%> ></video>
+          <%}else if(flag == 5){%>
+            <div class="message_holder">
+              <div class="msg_bbl">
+                <b style="color: #000">
+                  "New Audio Notification !"
+                </b>
+              </div>
+            <div><audio controls autoplay id="audio_play" src=<%=mess%> ></audio>
+            </div>
+          <%}else{%>
+          <h1 style='color: #ccc'>No message received</h1>
+          <%}%>
+          <//div>
+      </div>
+    </div>
+
+    
+  </body>
+</html>
